@@ -1,14 +1,13 @@
 const eslintrc = {
-  extends: ['@mstr/eslint-config-mstr', 'prettier'],
+  extends: ['prettier'],
   settings: {
     react: { version: '17.0.2' },
     'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'babel', 'jest', '@typescript-eslint'],
+  plugins: ['import', 'react', 'babel', 'jest', '@typescript-eslint'],
   rules: {
     'no-await-in-loop': 'off',
-    'jsx-a11y/label-has-associated-control': [2, { assert: 'either' }],
     'import/extensions': [
       'error',
       'ignorePackages',
