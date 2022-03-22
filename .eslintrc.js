@@ -1,13 +1,38 @@
-const eslintrc = {
-  extends: ['prettier'],
-  settings: {
-    react: { version: '17.0.2' },
-    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
   },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+  ],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', 'react', 'babel', 'jest', '@typescript-eslint'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+    '@typescript-eslint',
+  ],
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.ts', '.d.ts', '.tsx'],
+      },
+    },
+  },
   rules: {
+    'linebreak-style': 0,
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.js', '**/*.spec.js'] }],
     'no-await-in-loop': 'off',
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'jsx-a11y/label-has-associated-control': [2, { assert: 'either' }],
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -35,16 +60,4 @@ const eslintrc = {
     // disable the rule for all files
     '@typescript-eslint/explicit-function-return-type': 'off',
   },
-  overrides: [
-    {
-      files: ['.ts', '.tsx'],
-      rules: {
-        // enable the rules specifically for TypeScript files
-        '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
-        'no-undef': 'off',
-      },
-    },
-  ],
 };
-
-module.exports = eslintrc;

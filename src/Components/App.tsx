@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import "./app.scss";
+import './App.scss';
 
 const App = () => (
   <div className="template">
